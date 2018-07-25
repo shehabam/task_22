@@ -2,6 +2,12 @@ from rest_framework import serializers
 from restaurants.models import Restaurant, Item
 from django.contrib.auth.models import User
 
+
+class LogingInSerializer(serializers.ModelSerializer):
+    the_username = serializers.CharField(max_length=120)
+    the_password = serializers.CharField(write_only=True)
+
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     class Meta:
